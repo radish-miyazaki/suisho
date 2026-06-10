@@ -17,7 +17,7 @@ bbin install .
 ```
 
 Once the repository is published, it can also be installed straight
-from Git, e.g. `bbin install io.github.<owner>/suisho`.
+from Git, e.g. `bbin install io.github.radish-miyazaki/suisho`.
 
 Requires Babashka 1.3.0 or later. No other dependencies.
 (`deps.edn` exists only so bbin's `:local/root` resolution finds a
