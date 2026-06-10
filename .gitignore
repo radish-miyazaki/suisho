@@ -1,0 +1,16 @@
+# Internal specs and plans (Japanese, not for distribution)
+docs/
+
+# Editor / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Babashka / Clojure
+.cpcache/
+.nrepl-port
+
+# Local conversion output
+content/
+out/

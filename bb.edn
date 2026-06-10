@@ -1,0 +1,17 @@
+{:paths ["src"]
+ :min-bb-version "1.3.0"
+ :bbin/bin {suisho {:main-opts ["-m" "suisho.main"]}}
+ :tasks
+ {test {:doc "Run all tests"
+        :extra-paths ["test"]
+        :requires ([clojure.test :as t])
+        :task (let [nses '[suisho.parse-test
+                           suisho.convert-test
+                           suisho.main-test]]
+                (doseq [n nses] (require n))
+                (let [{:keys [fail error]} (apply t/run-tests nses)]
+                  (when (pos? (+ fail error))
+                    (System/exit 1))))}
+  convert {:doc "Convert a Cosense export JSON to Quartz Markdown"
+           :requires ([suisho.main])
+           :task (apply suisho.main/-main *command-line-args*)}}}
