@@ -103,6 +103,22 @@
 (defn- line-text [line]
   (if (map? line) (:text line) line))
 
+(defn- without-code-blocks
+  "Drop code: blocks (marker and body) so their #text is not read as tags."
+  [lines]
+  (loop [[line & more :as all] (seq lines)
+         out []]
+    (cond
+      (nil? all)
+      out
+
+      (str/starts-with? (str/triml line) "code:")
+      (let [[_ rest] (consume-block (indent-of line) more)]
+        (recur (seq rest) out))
+
+      :else
+      (recur more (conj out line)))))
+
 (defn- frontmatter [{:keys [title created updated]} tags]
   (str "---\n"
        "title: \"" (yaml-escape title) "\"\n"
@@ -120,7 +136,8 @@
   (let [texts (map line-text lines)
         ;; the first line repeats the title; drop it from the body
         body-lines (if (= (first texts) title) (rest texts) texts)
-        tags (distinct (mapcat parse/extract-tags body-lines))]
+        tags (distinct (mapcat parse/extract-tags
+                               (without-code-blocks body-lines)))]
     (str (frontmatter page tags)
          "\n"
          (lines->markdown body-lines)

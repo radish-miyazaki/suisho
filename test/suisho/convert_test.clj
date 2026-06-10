@@ -77,6 +77,23 @@
                 "body\n")
            (convert/page->markdown {:title "p"
                                     :lines [{:text "p"} {:text "body"}]}))))
+  (testing "hashtags inside code: blocks are not extracted as tags"
+    (is (= (str "---\n"
+                "title: \"p\"\n"
+                "tags:\n"
+                "  - real\n"
+                "---\n"
+                "\n"
+                "```sh\n#!/bin/bash\nnpm install #install-deps\n```\n"
+                "\n"
+                "#real\n")
+           (convert/page->markdown
+            {:title "p"
+             :lines ["p"
+                     "code:setup.sh"
+                     " #!/bin/bash"
+                     " npm install #install-deps"
+                     "#real"]}))))
   (testing "double quotes in titles are escaped"
     (is (= (str "---\n"
                 "title: \"say \\\"hi\\\"\"\n"

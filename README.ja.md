@@ -60,7 +60,7 @@ suisho export.json -o path/to/quartz/content
 | `table:名前` ブロック | GFM テーブル |
 | `>引用` | `> 引用` |
 | インデント行 | ネストした箇条書き |
-| `#タグ` | frontmatter の `tags` に収集 |
+| `#タグ` | frontmatter の `tags` に収集(`code:` ブロックやコードスパン内の `#` は無視) |
 
 ページのメタデータ(`created` / `updated`)は frontmatter の
 `date` / `modified` になります。バッククォートのコードスパン内は

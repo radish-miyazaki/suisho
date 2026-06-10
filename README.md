@@ -61,7 +61,7 @@ into the `content/` directory of a Quartz site.
 | `table:name` blocks | GFM tables |
 | `>quote` | `> quote` |
 | Indented lines | Nested bullet lists |
-| `#tag` | Collected into frontmatter `tags` |
+| `#tag` | Collected into frontmatter `tags` (`#` inside `code:` blocks and code spans is ignored) |
 
 Page metadata (`created` / `updated`) becomes `date` / `modified` in the
 frontmatter; backtick code spans are always left untouched.
