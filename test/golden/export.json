@@ -1,0 +1,41 @@
+{
+  "name": "golden",
+  "displayName": "golden",
+  "exported": 1750000000,
+  "pages": [
+    {
+      "title": "Quartz/Cosense",
+      "created": 1700000000,
+      "updated": 1705000000,
+      "lines": [
+        "Quartz/Cosense",
+        "Intro with [Plain page] and [[strong text]] and a #golden tag.",
+        "",
+        "[** Heading two]",
+        "\t[* bold] and [/ italic] and [- strike]",
+        "\t\tnested bullet with `code [not a link]` span",
+        ">quoted [Plain page] line",
+        "code:example.clj",
+        "\t(defn hello [] :world)",
+        "table:t",
+        "\tName\tValue",
+        "\ta\t1",
+        "[$ E = mc^2]",
+        "[https://gyazo.com/abc123]",
+        "[https://example.com/pic.png photo]",
+        "[https://example.com label]",
+        "[/other/page]",
+        "[someone.icon]"
+      ]
+    },
+    {
+      "title": "Plain page",
+      "created": 1700000001,
+      "updated": 1700000002,
+      "lines": [
+        {"text": "Plain page"},
+        {"text": "Body referencing [Quartz/Cosense]."}
+      ]
+    }
+  ]
+}

@@ -4,6 +4,8 @@ docs/
 # Local AI agent instructions
 CLAUDE.md
 AGENTS.md
+.claude/
+.mcp.json
 
 # Editor / OS
 .DS_Store
@@ -12,6 +14,7 @@ AGENTS.md
 .vscode/
 
 # Babashka / Clojure
+target/
 .cpcache/
 .nrepl-port
 .clj-kondo/
@@ -20,3 +23,6 @@ AGENTS.md
 # Local conversion output
 content/
 out/
+
+# mise
+mise.toml

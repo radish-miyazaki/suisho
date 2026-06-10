@@ -3,7 +3,8 @@
   (:require [babashka.cli :as cli]
             [babashka.fs :as fs]
             [cheshire.core :as json]
-            [suisho.convert :as convert]))
+            [suisho.convert :as convert]
+            [suisho.spec :as spec]))
 
 (def version "0.1.0")
 
@@ -34,7 +35,8 @@
   "Convert every page in the export JSON at `input` into Markdown files
   under `output`. Returns {:pages <count>}."
   [input output]
-  (let [{:keys [pages]} (json/parse-string (slurp input) true)]
+  (let [{:keys [pages]} (-> (json/parse-string (slurp input) true)
+                            spec/validate-export)]
     (fs/create-dirs output)
     (doseq [page pages]
       (spit (str (fs/path output (convert/title->filename (:title page))))

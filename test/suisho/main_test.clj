@@ -41,6 +41,25 @@
       (finally
         (fs/delete-tree tmp)))))
 
+(deftest convert!-rejects-invalid-export-test
+  (let [tmp (fs/create-temp-dir {:dir (temp-root)})
+        in (str (fs/path tmp "export.json"))
+        out (str (fs/path tmp "content"))]
+    (try
+      (testing "an export without :pages fails with a clear message"
+        (spit in (json/generate-string {:name "proj"}))
+        (let [e (try (main/convert! in out)
+                     (catch clojure.lang.ExceptionInfo e e))]
+          (is (instance? clojure.lang.ExceptionInfo e))
+          (is (str/includes? (ex-message e) "invalid export data"))))
+      (testing "a page with a malformed line fails before any file is written"
+        (spit in (json/generate-string
+                  {:pages [{:title "T" :lines [42]}]}))
+        (is (thrown? clojure.lang.ExceptionInfo (main/convert! in out)))
+        (is (not (fs/exists? (fs/path out "T.md")))))
+      (finally
+        (fs/delete-tree tmp)))))
+
 (deftest parse-args-test
   (is (= {:input "export.json" :output "content"}
          (main/parse-args ["export.json"])))
