@@ -1,6 +1,10 @@
 # Internal specs and plans (Japanese, not for distribution)
 docs/
 
+# Local AI agent instructions
+CLAUDE.md
+AGENTS.md
+
 # Editor / OS
 .DS_Store
 *.swp
