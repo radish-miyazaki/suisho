@@ -1,5 +1,7 @@
 # suisho
 
+English | [日本語](README.ja.md)
+
 A [Babashka](https://babashka.org/) CLI that converts a
 [Cosense](https://scrapbox.io/) (formerly Scrapbox) JSON export into
 Markdown for [Quartz 5](https://quartz.jzhao.xyz/).
