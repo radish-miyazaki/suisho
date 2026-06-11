@@ -11,14 +11,20 @@ Quartz へページを運ぶツールにふさわしい名前として付けま�
 
 ## インストール
 
-[bbin](https://github.com/babashka/bbin) を使い、ローカルのチェックアウトから:
+[bbin](https://github.com/babashka/bbin) でインストールします:
+
+```sh
+bbin install io.github.radish-miyazaki/suisho
+```
+
+ローカルのチェックアウトからインストールすることもできます:
 
 ```sh
 bbin install .
 ```
 
 Babashka 1.3.0 以降が必要です。それ以外の依存はありません。
-(`deps.edn` は bbin の `:local/root` 解決がマニフェストを要求するために
+(`deps.edn` は bbin の依存解決がマニフェストを要求するために
 置いてあるだけで、ツール自体は Babashka 組み込みライブラリのみで動作します)
 
 ## 使い方

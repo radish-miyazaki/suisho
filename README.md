@@ -12,14 +12,20 @@ Quartz.
 
 ## Installation
 
-With [bbin](https://github.com/babashka/bbin), from a local checkout:
+With [bbin](https://github.com/babashka/bbin):
+
+```sh
+bbin install io.github.radish-miyazaki/suisho
+```
+
+Or from a local checkout:
 
 ```sh
 bbin install .
 ```
 
 Requires Babashka 1.3.0 or later. No other dependencies.
-(`deps.edn` exists only so bbin's `:local/root` resolution finds a
+(`deps.edn` exists only so bbin's dependency resolution finds a
 manifest; the tool itself runs on Babashka built-ins alone.)
 
 ## Usage
